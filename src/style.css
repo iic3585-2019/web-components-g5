@@ -1,6 +1,3 @@
-.has-black-background{
-    background-color: black;
-}
-.has-white-text{
-    color: white;
+.is-hcentered{
+    justify-content: center !important;
 }

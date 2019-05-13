@@ -1,4 +1,5 @@
 import '../node_modules/bulma/css/bulma.min.css'
+import '../src/style.css'
 
 class ItemContainer extends HTMLElement {
     constructor() {
@@ -17,12 +18,18 @@ class ItemContainer extends HTMLElement {
         const template = document.getElementById('retail-item')
         const node = document.importNode(template.content, true)
 
+        node.getElementById("container").addEventListener('click', this.handleClick)
+
         node.getElementById("product-name").innerHTML = "Nombre del producto"
         node.getElementById("old-price").innerHTML = "20000"
         node.getElementById("new-price").innerHTML = "15000"
         node.getElementById("sale-percentage").innerHTML = "10"
 
         shadowRoot.appendChild(node)
+    }
+
+    handleClick() {
+        console.log("Me han clickeado")
     }
 }
 window.customElements.define('item-container', ItemContainer);
