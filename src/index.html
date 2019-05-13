@@ -23,7 +23,8 @@
 
     <div class="column is-flex is-hcentered">
 
-      <retail-item url="https://www.google.com" product_name='Televisor 44"' old_price="699000" new_price="499000" />
+      <retail-item url="https://www.google.com" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://cdn.lavoz.com.ar/sites/default/files/styles/box_128/public/archivo/nota_periodistica/sony-4k-515x320.jpg" />
 
     </div>
 
@@ -44,13 +45,14 @@
       <div class="box">
         <div class="column is-12" style="padding-bottom: 0px;">
           <div style="display: flex; justify-content: center;">
-            <img src="https://bulma.io/images/placeholders/128x128.png" style="width: 128px; height: auto;">
+            <img id="product-image" src="https://bulma.io/images/placeholders/128x128.png"
+              style="width: 128px; height: 128px;">
           </div>
         </div>
         <div class="column is-12" style="padding-bottom: 0px;">
           <span id="product-name"> </span>
         </div>
-        <div class="column is-12" style="font-size: 1.1rem; padding-bottom: 0px;">
+        <div class="column is-12" style="font-size: 1.05rem; padding-bottom: 0px;">
           $ <span id="new-price"></span> (Oferta)
         </div>
         <div class="column is-12" style=" padding-bottom: 0px;">

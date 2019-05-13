@@ -55,6 +55,10 @@ class RetailItem extends HTMLElement {
             node.getElementById("sale-percentage").innerHTML = String(sale_percentage)
         }
 
+        if (this.hasAttribute('image_url')) {
+            node.getElementById("product-image").src = this.image_url
+        }
+
         shadowRoot.appendChild(node)
     }
 
@@ -76,6 +80,9 @@ class RetailItem extends HTMLElement {
     }
     get new_price() {
         return this.getAttribute('new_price')
+    }
+    get image_url() {
+        return this.getAttribute('image_url')
     }
 
     // En caso que se quisiera modificar url se tendria que definir un setter para hacer this.url = "nueva_url"
