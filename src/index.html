@@ -19,12 +19,12 @@
     </div>
   </section>
 
-  <div class="columns">
+  <div class="columns" style="padding-top: 2rem;">
 
     <div class="column is-flex is-hcentered">
 
       <retail-item url="https://www.google.com" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
-        image_url="https://cdn.lavoz.com.ar/sites/default/files/styles/box_128/public/archivo/nota_periodistica/sony-4k-515x320.jpg" />
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg" />
 
     </div>
 
@@ -34,19 +34,16 @@
 
     </div>
 
-
   </div>
-
 
   <template id="retail-item">
     <link rel="stylesheet" href="app.css">
 
     <div id="container" class="columns is-inline-flex is-multiline is-centered is-gapless">
-      <div class="box">
+      <div class="box" style="position: relative;">
         <div class="column is-12" style="padding-bottom: 0px;">
           <div style="display: flex; justify-content: center;">
-            <img id="product-image" src="https://bulma.io/images/placeholders/128x128.png"
-              style="width: 128px; height: 128px;">
+            <img id="product-image" src="https://via.placeholder.com/250" style="width: 250px; height: 250px;">
           </div>
         </div>
         <div class="column is-12" style="padding-bottom: 0px;">
@@ -58,10 +55,16 @@
         <div class="column is-12" style=" padding-bottom: 0px;">
           $ <span id="old-price"></span>
         </div>
+
+        <div class="sale-container">
+          <span id="sale-percentage"> </span>
+        </div>
+
       </div>
+
     </div>
 
-    <span id="sale-percentage"></span>
+
 
   </template>
 

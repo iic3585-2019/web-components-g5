@@ -52,7 +52,9 @@ class RetailItem extends HTMLElement {
         node.getElementById("old-price").innerHTML = this.old_price
         node.getElementById("new-price").innerHTML = this.new_price
         if (percetage) {
-            node.getElementById("sale-percentage").innerHTML = String(sale_percentage)
+            node.getElementById("sale-percentage").innerHTML = String(sale_percentage) + "% DCTO"
+        } else {
+            node.getElementById("sale-percentage").innerHTML = "X% DCTO"
         }
 
         if (this.hasAttribute('image_url')) {

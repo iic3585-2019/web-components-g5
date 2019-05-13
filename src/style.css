@@ -1,3 +1,15 @@
 .is-hcentered{
     justify-content: center !important;
 }
+
+.sale-container{
+    position: absolute;
+    top: 8%;
+    right: 8%;
+}
+
+#sale-percentage{
+    border-radius: 4px;
+    background-color: #ffdd57;
+    padding: 1rem; 
+}
