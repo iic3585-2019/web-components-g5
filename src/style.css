@@ -13,3 +13,17 @@
     background-color: #ffdd57;
     padding: 1rem; 
 }
+
+.star{
+    width: auto;
+    height: 30px;
+}
+
+.star-container{
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.is-inactive{
+    opacity: 0.35;
+}

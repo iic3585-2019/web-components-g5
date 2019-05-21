@@ -52,9 +52,9 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     // new WriteFilePlugin(),
-    /*new CopyPlugin([
-      { from: 'src/templates/*', to: 'templates', flatten: true }
-    ]),*/
+    new CopyPlugin([
+      { from: 'src/static/*', to: 'static', flatten: true }
+    ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
