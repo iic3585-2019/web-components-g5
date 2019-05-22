@@ -16,8 +16,6 @@ export default class StarsBar extends HTMLElement {
         this.updateRating = this.updateRating.bind(this)
     }
 
-
-
     connectedCallback() {
         // Se inicializan los parámetros
         if (!this.hasAttribute('max_value')) {

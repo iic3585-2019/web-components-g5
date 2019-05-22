@@ -19,6 +19,23 @@
     </div>
   </section>
 
+  <div>
+    <custom-bar>
+      <ul class="Home google.com">
+      </ul>
+      <ul class="Productos">
+          <li class="Tecnología">4</li>
+          <li class="Moda">5</li>
+          <li class="Mascotas">6</li>
+      </ul>
+      <ul class="Ofertas">
+        <li class="Ciberday">https://github.com/</li>
+        <li class="Ofertas Semanales">2</li>
+        <li class="Chelazo unimarc">3</li>
+      </ul>
+    </custom-bar>
+  </div>
+
   <div class="columns" style="padding-top: 2rem;">
 
     <div class="column is-flex is-hcentered">
@@ -75,6 +92,16 @@
   <template id="stars">
     <link rel="stylesheet" href="app.css">
       <div id="container" class="star-container"></div>
+  </template>
+
+  <template id="custom-bar">
+    <link rel="stylesheet" href="app.css">
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">     
+      <div class="navbar-menu">
+        <div id="container" class="navbar-start">    
+        </div>  
+      </div>
+    </nav>
   </template>
 
 </body>

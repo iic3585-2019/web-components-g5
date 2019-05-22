@@ -3,7 +3,7 @@ export default class RetailItem extends HTMLElement {
         // Se llama al padre, ya que es una herencia
         super()
 
-        // Se abre el sahdowDOM
+        // Se abre el shadowDOM
         this.root = this.attachShadow({ mode: 'open' })
 
         // Se bindea el this de la función para que sea el mismo de el item
