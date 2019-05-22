@@ -6,9 +6,7 @@ export default class RetailItem extends HTMLElement {
         // Se abre el sahdowDOM
         this.root = this.attachShadow({ mode: 'open' })
 
-        // Se bindea el this de la función para que sea el mismo de el item
-        // container, para que así pueda acceder a los atributos de manera
-        // más limpia y ordenada
+        // Se bindea el this de la función para que sea el mismo que el de RetailItem
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -17,7 +15,7 @@ export default class RetailItem extends HTMLElement {
 
         // Se inicializan los parámetros
         if (!this.hasAttribute('url')) {
-            this.setAttribute('url', 'www.google.com')
+            this.setAttribute('url', 'https://www.google.com/')
         }
         if (!this.hasAttribute('product_name')) {
             this.setAttribute('product_name', 'attr product_name is missing')
@@ -63,8 +61,7 @@ export default class RetailItem extends HTMLElement {
 
     // Función que se hara cargo de ejecutar acciones cuando se clikee
     handleClick() {
-        console.log("Me han clickeado")
-        console.log(this.url)
+        window.open(this.url, '_blank')
     }
 
     // Se define un getter para así ocupar el this.url
