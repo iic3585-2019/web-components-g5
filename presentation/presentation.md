@@ -298,3 +298,77 @@ handleClick(x) {
     }
 }
 ```
+
+---
+
+# Barra de Navegación
+Uso en html
+```html
+<custom-bar>
+    <ul class="Home google.com">
+    </ul>
+    <ul class="Productos">
+        <li class="Tecnología">/index</li>
+        <li class="Moda">/home</li>
+        <li class="Mascotas">/cart</li>
+    </ul>
+    
+</custom-bar>
+```
+## Cosas más relevantes
+- Generación dinámica de la barra
+- Pueden ser elementos con o sin dropdown
+- Cada elemento direcciona mediante click
+
+---
+
+# Generación dinámica de la barra
+## Procesamiento de tags html
+Se revisa el contenido del valor `class` y del texto contenido en las etiquetas.
+
+```javascript
+this.obj = {}
+Array.from(this.getElementsByTagName("ul")).forEach(element => {
+    this.obj[element.className] = []
+    Array.from(element.getElementsByTagName("li")).forEach(item => {
+        this.obj[element.className].push([item.className, item.innerText])
+    })
+})
+```
+
+---
+
+# Ensamblado de la barra
+Se crean los elementos de la barra dependiendo de los valores de `<ul>` y `<li>`
+```javascript
+Object.keys(this.obj).forEach(key=>{
+    let html = ''
+    if (this.obj[key].length == 0) {
+        html += '<a href="'
+        console.log(key)
+        html += key.split(" ")[1]
+        html += '" class="navbar-item">'
+        html += key.split(" ")[0]
+        html += '</a>'
+    }
+    else{
+        html += '<div class="navbar-item has-dropdown is-hoverable">'
+        html += '<a class="navbar-link is-arrowless">'
+        html += key
+        html += '</a>' 
+        html += '<div class="navbar-dropdown is-boxed">'
+        
+        this.obj[key].forEach(val => {
+            html += '<a href="'
+            html += val[1]
+            html += '" class="navbar-item">'
+            html += val[0]
+            html += '</a>'
+        }) 
+
+        html += '</div></div>'
+    }
+    
+    this.mainContainer.innerHTML += html
+})
+```

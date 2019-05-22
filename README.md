@@ -41,4 +41,22 @@ Implementar componentes web mediante la clase `HTMLElement`. En particular se pe
     El elemento al ser clickeado cambia el rating.
 
 
-Finalmente se pedía un componente más avanzado (RELLENAR AQUÍ CON COSAS DEL COMPONENTE AVANZADO)
+Finalmente se pedía un componente más avanzado, en el cual se decidió desarrollar una barra de navegación que puede ser armada dinámicamente mediante elementos `<ul>` y `<li>`. Este componente se instancia de la siguiente manera
+
+```html
+<custom-bar>
+    <ul class="Home google.com">
+    </ul>
+    <ul class="Productos">
+        <li class="Tecnología">/index</li>
+        <li class="Moda">/home</li>
+        <li class="Mascotas">/cart</li>
+    </ul>
+    <ul class="Ofertas">
+    <li class="Ciberday">https://github.com/</li>
+    <li class="Ofertas Semanales">https://facebook.com/</li>
+    <li class="Chelazo unimarc">https://youtube.com/</li>
+    </ul>
+</custom-bar>
+```
+El nombre de los elementos de la barra se deben situar instanciar `class="texto-a-insertar"` y la dirección que re-envía al clickear va entre las etiquetas `<li>link-a-redirigir</li>`. Si no se desea un elemeto dropdown, basta con instancia la clase del elemento `<ul>` como nombre y link separados por un espacio `<ul class="Texto link">`.
