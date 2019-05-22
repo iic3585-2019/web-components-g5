@@ -22,8 +22,7 @@ image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgad
 ## Cosas más relevantes
 - Contrucción y manejo de estilo
 - Lectura de atributos
-- Manejo de eventos
-
+- Asignar url de re-dirección
 ---
 
 # Web Component: Esquema general
@@ -62,7 +61,6 @@ export default class RetailItem extends HTMLElement {
     constructor() {
         super()
         this.root = this.attachShadow({ mode: 'open' })
-        this.handleClick = this.handleClick.bind(this)
     }
     ...
 }
@@ -106,11 +104,13 @@ Antes de continuar veamos el template. ¿Cómo se le da estilo al template, si e
 <template id="retail-item">
     <!-- ACA SE CARGAN LOS ESTILOS!!! -->
     <link rel="stylesheet" href="app.css">
-    <div id="container" class="columns is-inline-flex is-multiline is-centered is-gapless">
+    <div class="columns is-inline-flex is-multiline is-centered is-gapless">
         <div class="box" style="position: relative;">
             <div class="column is-12" style="padding-bottom: 0px;">
                 <div style="display: flex; justify-content: center;">
-                <img id="product-image" src="https://via.placeholder.com/250" style="width: 250px; height: 250px;">
+                    <a id="image-container" href="">
+                        <img id="product-image" src="https://via.placeholder.com/250" style="width: 250px; height: 250px;" />
+                    </a>
                 </div>
             </div>
             <div class="column is-12" style="padding-bottom: 0px;">
@@ -141,9 +141,6 @@ connectedCallback() {
     const template = document.getElementById('retail-item')
     const node = document.importNode(template.content, true)
 
-    this.mainContainer = node.getElementById("container")
-    this.mainContainer.addEventListener('click', this.handleClick)
-
     node.getElementById("product-name").innerHTML = this.product_name
     node.getElementById("old-price").innerHTML = this.old_price
     node.getElementById("new-price").innerHTML = this.new_price
@@ -157,6 +154,8 @@ connectedCallback() {
         node.getElementById("product-image").src = this.image_url
     }
 
+    node.getElementById("image-container").href = this.url
+    
     shadowRoot.appendChild(node)
 }
 ```
@@ -190,6 +189,7 @@ this.atributo ej: let url = this.url*/
 # Manejo de Eventos
 
 ```javascript
+// Inicialmente se había hecho así
 constructor() {
     /* más código arriba... */
     this.handleClick = this.handleClick.bind(this)
@@ -205,6 +205,9 @@ connectedCallback(){
 handleClick() {
     window.open(this.url, '_blank')
 }
+
+//Pero se puede simplificar con el uso de anchor (<a href="url_here"></a>)
+node.getElementById("image-container").href = this.url
 ```
 ---
 

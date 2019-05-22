@@ -5,9 +5,6 @@ export default class RetailItem extends HTMLElement {
 
         // Se abre el sahdowDOM
         this.root = this.attachShadow({ mode: 'open' })
-
-        // Se bindea el this de la función para que sea el mismo que el de RetailItem
-        this.handleClick = this.handleClick.bind(this);
     }
 
     connectedCallback() {
@@ -40,9 +37,6 @@ export default class RetailItem extends HTMLElement {
         const template = document.getElementById('retail-item')
         const node = document.importNode(template.content, true)
 
-        this.mainContainer = node.getElementById("container")
-        this.mainContainer.addEventListener('click', this.handleClick)
-
         node.getElementById("product-name").innerHTML = this.product_name
         node.getElementById("old-price").innerHTML = this.old_price
         node.getElementById("new-price").innerHTML = this.new_price
@@ -56,12 +50,9 @@ export default class RetailItem extends HTMLElement {
             node.getElementById("product-image").src = this.image_url
         }
 
-        shadowRoot.appendChild(node)
-    }
+        node.getElementById("image-container").href = this.url
 
-    // Función que se hara cargo de ejecutar acciones cuando se clikee
-    handleClick() {
-        window.open(this.url, '_blank')
+        shadowRoot.appendChild(node)
     }
 
     // Se define un getter para así ocupar el this.url
@@ -85,10 +76,5 @@ export default class RetailItem extends HTMLElement {
     /*set url(newValue) {
         this.setAttribute('url', newValue);
     }*/
-
-    // Se limpian los listeners para cuando se desmonte el elemento
-    disconnectedCallback() {
-        this.mainContainer.removeEventListener('click', this.handleClick)
-    }
 }
 window.customElements.define('retail-item', RetailItem)
