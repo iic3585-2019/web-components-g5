@@ -17,7 +17,9 @@ url="https://www.ing.uc.cl/"
 product_name='Televisor 44"' 
 old_price="699000" 
 new_price="499000" ,
-image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg" />
+image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+    <stars-bar max_value="7" selected_value="0" />
+</retail-item>
 ```
 ## Cosas más relevantes
 - Contrucción y manejo de estilo
@@ -72,7 +74,7 @@ Se inicializan los atributos en caso de que no se hayan ingresado al momento de 
 
 ```javascript
 connectedCallback() {
-    let percetage = true
+    let percentage = true
     // Se inicializan los parámetros
     if (!this.hasAttribute('url')) {
         this.setAttribute('url', 'www.google.com')
@@ -82,15 +84,15 @@ connectedCallback() {
     }
     if (!this.hasAttribute('old_price')) {
         this.setAttribute('old_price', 'attr old_price is missing')
-        percetage = false
+        percentage = false
     }
     if (!this.hasAttribute('new_price')) {
         this.setAttribute('new_price', 'attr new_price is missing')
-        percetage = false
+        percentage = false
     }
     let sale_percentage = 0
     // Se puede calcular el procentaje de descuento
-    if (percetage) {
+    if (percentage) {
         sale_percentage = Math.round((this.old_price - this.new_price) / (this.old_price) * 100)
     }
     ...
@@ -125,6 +127,7 @@ Antes de continuar veamos el template. ¿Cómo se le da estilo al template, si e
             <div class="sale-container">
                 <span id="sale-percentage"> </span>
             </div>
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -144,7 +147,7 @@ connectedCallback() {
     node.getElementById("product-name").innerHTML = this.product_name
     node.getElementById("old-price").innerHTML = this.old_price
     node.getElementById("new-price").innerHTML = this.new_price
-    if (percetage) {
+    if (percentage) {
         node.getElementById("sale-percentage").innerHTML = String(sale_percentage) + "% DCTO"
     } else {
         node.getElementById("sale-percentage").innerHTML = "X% DCTO"
