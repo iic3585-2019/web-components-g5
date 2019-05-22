@@ -40,8 +40,64 @@
 
     <div class="column is-flex is-hcentered">
 
-      <retail-item url="https://www.google.com" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
-        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg" />
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
+
+    </div>
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
+
+    </div>
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
+
+    </div>
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item />
+
+    </div>
+  </div>
+
+  <div class="columns" style="padding-top: 2rem;">
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
+
+    </div>
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
+
+    </div>
+
+    <div class="column is-flex is-hcentered">
+
+      <retail-item url="https://www.ing.uc.cl/" product_name='Televisor 44"' old_price="699000" new_price="499000" ,
+        image_url="https://totalmarcas.com/2885-home_default/televisor-samsung-43-pulgadas-full-hd-flat-smart-tv-j5290a-series-5.jpg">
+        <stars-bar max_value="7" selected_value="0" />
+      </retail-item>
 
     </div>
 
@@ -55,7 +111,7 @@
   <div class="columns">
 
     <div class="column is-flex is-hcentered">
-      <stars-bar max_value="6" selected_value="2"></stars-bar>
+      <stars-bar max_value="6" selected_value="2" />
     </div>
 
   </div>
@@ -63,11 +119,13 @@
   <template id="retail-item">
     <link rel="stylesheet" href="app.css">
 
-    <div id="container" class="columns is-inline-flex is-multiline is-centered is-gapless">
+    <div class="columns is-inline-flex is-multiline is-centered is-gapless">
       <div class="box" style="position: relative;">
         <div class="column is-12" style="padding-bottom: 0px;">
           <div style="display: flex; justify-content: center;">
-            <img id="product-image" src="https://via.placeholder.com/250" style="width: 250px; height: 250px;">
+            <a id="image-container" href="">
+              <img id="product-image" src="https://via.placeholder.com/250" style="width: 250px; height: 250px;" />
+            </a>
           </div>
         </div>
         <div class="column is-12" style="padding-bottom: 0px;">
@@ -84,6 +142,8 @@
           <span id="sale-percentage"> </span>
         </div>
 
+        <slot>
+        </slot>
       </div>
 
     </div>
@@ -91,7 +151,7 @@
 
   <template id="stars">
     <link rel="stylesheet" href="app.css">
-      <div id="container" class="star-container"></div>
+    <div id="container" class="star-container"></div>
   </template>
 
   <template id="custom-bar">

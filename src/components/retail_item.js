@@ -5,35 +5,30 @@ export default class RetailItem extends HTMLElement {
 
         // Se abre el shadowDOM
         this.root = this.attachShadow({ mode: 'open' })
-
-        // Se bindea el this de la función para que sea el mismo de el item
-        // container, para que así pueda acceder a los atributos de manera
-        // más limpia y ordenada
-        this.handleClick = this.handleClick.bind(this);
     }
 
     connectedCallback() {
-        let percetage = true
+        let percentage = true
 
         // Se inicializan los parámetros
         if (!this.hasAttribute('url')) {
-            this.setAttribute('url', 'www.google.com')
+            this.setAttribute('url', 'https://www.google.com/')
         }
         if (!this.hasAttribute('product_name')) {
             this.setAttribute('product_name', 'attr product_name is missing')
         }
         if (!this.hasAttribute('old_price')) {
             this.setAttribute('old_price', 'attr old_price is missing')
-            percetage = false
+            percentage = false
         }
         if (!this.hasAttribute('new_price')) {
             this.setAttribute('new_price', 'attr new_price is missing')
-            percetage = false
+            percentage = false
         }
 
         let sale_percentage = 0
         // Se puede calcular el procentaje de 
-        if (percetage) {
+        if (percentage) {
             sale_percentage = Math.round((this.old_price - this.new_price) / (this.old_price) * 100)
         }
 
@@ -42,13 +37,10 @@ export default class RetailItem extends HTMLElement {
         const template = document.getElementById('retail-item')
         const node = document.importNode(template.content, true)
 
-        this.mainContainer = node.getElementById("container")
-        this.mainContainer.addEventListener('click', this.handleClick)
-
         node.getElementById("product-name").innerHTML = this.product_name
         node.getElementById("old-price").innerHTML = this.old_price
         node.getElementById("new-price").innerHTML = this.new_price
-        if (percetage) {
+        if (percentage) {
             node.getElementById("sale-percentage").innerHTML = String(sale_percentage) + "% DCTO"
         } else {
             node.getElementById("sale-percentage").innerHTML = "X% DCTO"
@@ -58,13 +50,9 @@ export default class RetailItem extends HTMLElement {
             node.getElementById("product-image").src = this.image_url
         }
 
-        shadowRoot.appendChild(node)
-    }
+        node.getElementById("image-container").href = this.url
 
-    // Función que se hara cargo de ejecutar acciones cuando se clikee
-    handleClick() {
-        console.log("Me han clickeado")
-        console.log(this.url)
+        shadowRoot.appendChild(node)
     }
 
     // Se define un getter para así ocupar el this.url
@@ -88,10 +76,5 @@ export default class RetailItem extends HTMLElement {
     /*set url(newValue) {
         this.setAttribute('url', newValue);
     }*/
-
-    // Se limpian los listeners para cuando se desmonte el elemento
-    disconnectedCallback() {
-        this.mainContainer.removeEventListener('click', this.handleClick)
-    }
 }
 window.customElements.define('retail-item', RetailItem)

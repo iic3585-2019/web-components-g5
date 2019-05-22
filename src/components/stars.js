@@ -3,7 +3,7 @@ export default class StarsBar extends HTMLElement {
         // Se llama al padre, ya que es una herencia
         super()
 
-        // Se abre el sahdowDOM
+        // Se abre el shadowDOM
         this.root = this.attachShadow({ mode: 'open' })
 
         this.status = {
@@ -11,8 +11,6 @@ export default class StarsBar extends HTMLElement {
         }
 
         this.handleClick = this.handleClick.bind(this)
-        this.getStar = this.getStar.bind(this)
-        this.getInactiveStar = this.getInactiveStar.bind(this)
         this.updateRating = this.updateRating.bind(this)
     }
 
